@@ -7,13 +7,12 @@
     <meta name="description" content="Laboratorio de anatomía patológica en Castellón. Microtomo obsidiana para cortes ultrafinos 0.5-2µm. ISO 15189 acreditado.">
     <style>
         :root {
-            /* NUEVA PALETA ROSA NEÓN */
-            --rosa-neon-claro: #eabadf;     /* Rosa neón claro */
-            --magenta-claro: #eee0e8;       /* Magenta claro */
-            --rosa-principal: #c93f7d;      /* Rosa principal */
-            --rosa-medio: #cd7b98;          /* Rosa medio */
-            --rosa-neon: #d481c8;           /* Rosa neón vibrante */
-            --rosa-oscuro: #a13566;         /* Rosa oscuro generado */
+            --rosa-neon-claro: #eabadf;
+            --magenta-claro: #eee0e8;
+            --rosa-principal: #c93f7d;
+            --rosa-medio: #cd7b98;
+            --rosa-neon: #d481c8;
+            --rosa-oscuro: #a13566;
             --blanco: #ffffff;
             --texto: #5a2d47;
             --sombra-rosa: rgba(212, 129, 200, 0.4);
@@ -137,24 +136,6 @@
             box-shadow: 0 10px 30px var(--sombra-rosa);
         }
 
-        .tabla-comparativa {
-            width: 100%; border-collapse: collapse; margin: 3rem 0;
-            background: linear-gradient(145deg, var(--blanco), var(--rosa-neon-claro));
-            border-radius: 25px; overflow: hidden; box-shadow: 0 25px 80px var(--sombra-rosa);
-            border: 3px solid rgba(212, 129, 200, 0.3);
-        }
-        .tabla-comparativa th {
-            background: linear-gradient(135deg, var(--rosa-principal), var(--rosa-neon));
-            color: var(--blanco); padding: 2rem 1.8rem; font-weight: 800; font-size: 1.2rem;
-            text-shadow: 0 3px 10px rgba(0,0,0,0.3);
-        }
-        .tabla-comparativa td { 
-            border: 2px solid rgba(212, 129, 200, 0.3); padding: 1.8rem; font-size: 1.1rem;
-            transition: background 0.3s;
-        }
-        .tabla-comparativa tr:hover td { background: rgba(212, 129, 200, 0.1); }
-        .tabla-comparativa tr:nth-child(even) td { background: var(--rosa-neon-claro); }
-
         .contact-container { display: grid; grid-template-columns: 2fr 1fr; gap: 4.5rem; }
         .contact-form { display: grid; gap: 2.2rem; }
         input, textarea, select {
@@ -206,9 +187,16 @@
             background: linear-gradient(135deg, #e8f8f5, #c8f7dc); 
             color: #0a6c51; border: 4px solid #94f4c5; 
         }
-        .alert-error { 
-            background: linear-gradient(135deg, #fff2f2, #ffcaca); 
-            color: #a81c22; border: 4px solid #fca5a5; 
+
+        .resumen-empresa {
+            background: linear-gradient(145deg, var(--blanco), var(--rosa-neon-claro));
+            border: 3px solid rgba(212,129,200,0.3);
+            box-shadow: 0 20px 60px var(--sombra-rosa);
+            border-radius: 30px;
+            padding: 2.5rem 3rem;
+            margin: 0 auto 3.5rem;
+            max-width: 950px;
+            text-align: center;
         }
 
         footer {
@@ -242,7 +230,6 @@
     </style>
 </head>
 <body>
-    <!-- HEADER CON NAVEGACIÓN POR PESTAÑAS -->
     <header>
         <div class="header-container">
             <div class="logo">
@@ -261,11 +248,25 @@
         </div>
     </header>
 
-    <!-- CONTENIDO DE PESTAÑAS (mismo que antes pero con nueva paleta) -->
     <main>
         <!-- INICIO -->
         <section id="inicio" class="active">
             <h1>Laboratorios TISSUUM</h1>
+            
+            <!-- RESUMEN DE LA EMPRESA -->
+            <div class="resumen-empresa">
+                <p style="font-size:1.4rem; color:var(--texto); line-height:1.8;">
+                    <strong>Laboratorios TISSUUM</strong> es un centro especializado en 
+                    <strong>anatomía patológica y técnicas histológicas avanzadas</strong>, 
+                    ubicado en <strong>Castellón</strong>. 
+                    Combinamos innovación tecnológica con precisión diagnóstica, 
+                    utilizando <em>microtomos de obsidiana</em> para lograr cortes ultrafinos de tejidos
+                    con una calidad sin precedentes. 
+                    Nuestro compromiso con la excelencia y la acreditación <strong>ISO 15189</strong> 
+                    garantiza resultados de alta fiabilidad para hospitales, laboratorios de I+D y centros universitarios.
+                </p>
+            </div>
+
             <p style="font-size: 1.5rem; text-align: center; max-width: 950px; margin: 0 auto 4rem; color: var(--rosa-oscuro); font-weight: 400;">
                 Laboratorio especializado en técnicas histológicas avanzadas y citodiagnóstico de alta precisión con <strong>microtomo de obsidiana</strong> 💖
             </p>
@@ -288,40 +289,177 @@
             </div>
         </section>
 
-        <!-- Resto de secciones igual pero con nueva paleta ROSA NEÓN -->
-        <!-- [El contenido de las otras secciones permanece igual que en la versión anterior] -->
-        <!-- Solo cambió la paleta de colores por tu nueva tabla ROSA NEÓN espectacular 💖 -->
+        <!-- INNOVACIÓN -->
+        <section id="innovacion">
+            <h2>✨ Innovación Tecnológica</h2>
+            <p style="font-size: 1.3rem; max-width: 900px; margin: 0 auto 2rem; line-height: 1.8;">
+                Cada vez hay más incremento de patologías complejas con poca diferenciación entre ellas —como cánceres o enfermedades degenerativas— que demandan preparaciones histológicas de mayor calidad.
+            </p>
+            <div class="grid-3">
+                <div class="card">
+                    <span class="etiqueta">Problema</span>
+                    <h3>Limitaciones Tradicionales</h3>
+                    <p>Los microtomos tradicionales presentan limitaciones en regularidad del filo y durabilidad, generando artefactos como estrías, arrugas, roturas tisulares, compresión o estiramiento del tejido.</p>
+                </div>
+                <div class="card">
+                    <span class="etiqueta">Solución</span>
+                    <h3>Cuchilla Obsidiana</h3>
+                    <p>Debido a la fractura concoidea del material, ofrece un filo extremadamente recto y fino, permitiendo cortes homogéneos con menos deformación tisular.</p>
+                </div>
+                <div class="card">
+                    <span class="etiqueta">Ventaja</span>
+                    <h3>Innovación Diferencial</h3>
+                    <p>El uso de esta tecnología representa una innovación única respecto a otros laboratorios convencionales.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SERVICIOS -->
+        <section id="servicios">
+            <h2>🧬 Servicios Especializados</h2>
+            <div class="grid-3">
+                <div class="card">
+                    <span class="etiqueta">Histología</span>
+                    <h3>Procesamiento Avanzado</h3>
+                    <p>Cortes ultrafinos 0.5-2µm para microscopía óptica avanzada y correlativa con mínima deformación tisular.</p>
+                </div>
+                <div class="card">
+                    <span class="etiqueta">Citología</span>
+                    <h3>Análisis Celular</h3>
+                    <p>Preparaciones citológicas de alta precisión para diagnóstico oncológico y estudios celulares.</p>
+                </div>
+                <div class="card">
+                    <span class="etiqueta">I+D</span>
+                    <h3>Investigación Biomédica</h3>
+                    <p>Colaboración con universidades, hospitales y farmacéuticas en proyectos de ultraestructura y patología experimental.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- MODELO DE NEGOCIO -->
+        <section id="modelo">
+            <h2>📊 Modelo de Negocio</h2>
+            <div class="resumen-empresa" style="margin-bottom: 3rem;">
+                <h3>Objetivos del Proyecto</h3>
+                <p style="font-size:1.2rem; line-height:1.8;">
+                    Construcción de un laboratorio con <strong>microtomo de obsidiana</strong> capaz de realizar cortes ultrafinos entre <strong>2 y 0,5 µm</strong>, aptos para microscopía óptica avanzada y correlativa. 
+                    Establecer un estándar de calidad basado en la <strong>reducción de artefactos</strong>, aumentos de nitidez, alianzas con universidades y centros hospitalarios, y generar un servicio especializado único.
+                </p>
+            </div>
+        </section>
+
+        <!-- PROCESO -->
+        <section id="proceso">
+            <h2>⚙️ Metodología y Alcance</h2>
+            <div class="resumen-empresa" style="margin-bottom: 3rem;">
+                <h3>Metodología Utilizada</h3>
+                <ul style="font-size:1.2rem; line-height:1.8; text-align:left;">
+                    <li>✅ Revisión técnica de equipamiento existente</li>
+                    <li>✅ Análisis PESTEL y estudio de demanda del sector biomédico</li>
+                    <li>✅ Viabilidad económica: inversión inicial y retorno</li>
+                    <li>✅ Benchmarking con laboratorios nacionales e internacionales</li>
+                    <li>✅ Estudio de competencia directa e indirecta</li>
+                </ul>
+            </div>
+            <div class="resumen-empresa">
+                <h3>Alcance del Proyecto</h3>
+                <p style="font-size:1.2rem; line-height:1.8;">
+                    Creación de laboratorio completo con servicios de <strong>procesamiento histológico y citológico</strong>, investigación biomédica, oncología, patología, investigación farmacéutica, estudios de ultraestructura y puesta en marcha del <strong>microtomo de obsidiana</strong>.
+                </p>
+            </div>
+        </section>
+
+        <!-- CONTACTO -->
+        <section id="contacto">
+            <h2>📞 Contacto</h2>
+            <div class="contact-container">
+                <div class="contact-form">
+                    <div id="alertSuccess" class="alert alert-success">
+                        ✅ ¡Mensaje enviado correctamente! Te contactaremos en 24 horas.
+                    </div>
+                    <form id="contactForm">
+                        <input type="text" name="name" placeholder="👤 Tu nombre completo" required>
+                        <input type="email" name="email" placeholder="📧 Tu email" required>
+                        <input type="tel" name="phone" placeholder="📱 Teléfono (opcional)">
+                        <select name="service" required>
+                            <option value="">🔬 Selecciona un servicio</option>
+                            <option value="histologia">Procesamiento Histológico</option>
+                            <option value="citologia">Citología Avanzada</option>
+                            <option value="investigacion">Investigación Biomédica</option>
+                            <option value="presupuesto">Presupuesto Personalizado</option>
+                            <option value="colaboracion">Colaboración I+D</option>
+                        </select>
+                        <textarea name="message" rows="5" placeholder="💬 Cuéntanos qué necesitas... Presupuestos, colaboraciones, consultas técnicas..." required></textarea>
+                        <button type="submit" class="submit-btn">🚀 Enviar Consulta</button>
+                    </form>
+                </div>
+                
+                <div class="contact-info">
+                    <h3>Información de Contacto</h3>
+                    <div class="contact-item">
+                        <span class="contact-icon">📧</span>
+                        <p><strong>laboratoriotissuum@gmail.com</strong></p>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-icon">📍</span>
+                        <p><strong>Castellón de la Plana</strong><br>Comunidad Valenciana, España 🇪🇸</p>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-icon">⏰</span>
+                        <p><strong>Horario de atención:</strong><br>Lunes a Viernes: 9:00 - 18:00</p>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
-    <!-- [SCRIPT igual que antes] -->
+    <footer>
+        <div class="footer-links">
+            <a href="#" onclick="mostrarSeccion('inicio')">🏠 Inicio</a>
+            <a href="#" onclick="mostrarSeccion('innovacion')">✨ Innovación</a>
+            <a href="#" onclick="mostrarSeccion('servicios')">🧬 Servicios</a>
+            <a href="#" onclick="mostrarSeccion('modelo')">📊 Negocio</a>
+            <a href="#" onclick="mostrarSeccion('proceso')">⚙️ Proceso</a>
+            <a href="#" onclick="mostrarSeccion('contacto')">📞 Contacto</a>
+        </div>
+        <p>&copy; 2026 Laboratorios TISSUUM – Anatomía Patológica Avanzada | Castellón, España</p>
+    </footer>
+
     <script>
         function mostrarSeccion(idSeccion) {
             document.querySelectorAll('section').forEach(seccion => {
                 seccion.classList.remove('active');
             });
             document.getElementById(idSeccion).classList.add('active');
-            document.querySelectorAll('nav a').forEach(enlace => {
+            document.querySelectorAll('nav a, .footer-links a').forEach(enlace => {
                 enlace.classList.remove('active');
             });
             event.target.classList.add('active');
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
+        // FORMULARIO CONTACTO FUNCIONAL
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
             const formData = new FormData(this);
-            const subject = `Nueva consulta TISSUUM Labs - Obsidiana 💖`;
+            const subject = `Nueva consulta TISSUUM Labs - ${formData.get('service') || 'General'}`;
             const body = `👤 Nombre: ${formData.get('name')}
 📧 Email: ${formData.get('email')}
 📱 Teléfono: ${formData.get('phone') || 'No proporcionado'}
 🔬 Servicio: ${formData.get('service')}
 💬 Mensaje: ${formData.get('message')}`;
+            
             const mailtoLink = `mailto:laboratoriotissuum@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
             window.location.href = mailtoLink;
+            
             document.getElementById('alertSuccess').style.display = 'block';
-            setTimeout(() => document.getElementById('alertSuccess').style.display = 'none', 7000);
+            this.reset();
+            setTimeout(() => {
+                document.getElementById('alertSuccess').style.display = 'none';
+            }, 7000);
         });
 
+        // Inicializar en INICIO
         document.addEventListener('DOMContentLoaded', function() {
             mostrarSeccion('inicio');
         });

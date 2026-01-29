@@ -4,386 +4,293 @@
     <meta charset="UTF-8">
     <title>Laboratorios TISSUUM – Anatomía Patológica | Castellón</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Laboratorio de anatomía patológica en Castellón con tecnología de vanguardia. Microtomo obsidiana para diagnósticos precisos. ISO 15189.">
+    <meta name="description" content="Laboratorio de anatomía patológica en Castellón. Diagnósticos precisos con tecnología de vanguardia. ISO 15189 acreditado.">
     <style>
         :root {
-            --rosa-pastel: #fdf2f8; --rosa-claro: #fde4f2; --rosa-suave: #f9e1f0;
-            --rosa-medio: #f7b2d9; --rosa-vibrante: #f06bb0; --rosa-fuerte: #e77ac5;
-            --rosa-intenso: #d93c8b; --rosa-oscuro: #b0448c; --fucsia: #a42769;
-            --color-texto: #66294b; --color-blanco: #ffffff;
+            --azul-marino: #1e3a8a; --azul-claro: #3b82f6; --azul-suave: #dbeafe;
+            --blanco: #ffffff; --gris-claro: #f8fafc; --gris: #64748b;
+            --verde-exito: #10b981; --rojo-error: #ef4444; --amarillo: #f59e0b;
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, var(--rosa-pastel) 0%, var(--rosa-claro) 100%);
-            color: var(--color-texto); line-height: 1.6; font-size: 1rem;
-            min-height: 100vh;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6; color: #1e293b; background: var(--gris-claro);
         }
 
-        header { 
-            background: rgba(255,255,255,0.97); 
-            backdrop-filter: blur(15px);
-            border-bottom: 4px solid var(--rosa-vibrante);
-            box-shadow: 0 8px 30px rgba(217,60,139,0.2);
+        header {
+            background: var(--blanco); box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky; top: 0; z-index: 100;
         }
-        .barra-superior {
-            max-width: 1200px; margin: 0 auto; 
-            padding: 1.2rem 2rem; display: flex; 
-            justify-content: space-between; align-items: center;
+        .header-container {
+            max-width: 1200px; margin: 0 auto; padding: 1rem 2rem;
+            display: flex; justify-content: space-between; align-items: center;
         }
-        .logo { width: 380px; height: 110px; }
-        .logo-img {
-            width: 100%; height: 100%; object-fit: contain;
-            border-radius: 12px; border: 4px solid var(--rosa-vibrante);
-            box-shadow: 0 12px 35px rgba(217,60,139,0.4);
-            transition: all 0.3s ease;
+        .logo {
+            font-size: 1.8rem; font-weight: 800; color: var(--azul-marino);
         }
-        .logo-img:hover { transform: scale(1.03); }
-
-        .navbar { 
-            background: linear-gradient(135deg, var(--rosa-oscuro), var(--rosa-fuerte));
-            box-shadow: 0 6px 30px rgba(217,60,139,0.3);
+        nav ul {
+            display: flex; list-style: none; gap: 2rem;
         }
-        .navbar-inner {
-            max-width: 1200px; margin: 0 auto; 
-            padding: 0.8rem 2rem; display: flex; 
-            justify-content: space-between; align-items: center;
-        }
-        nav ul { list-style: none; display: flex; flex-wrap: wrap; gap: 1.2rem; }
         nav a {
-            color: var(--color-blanco); text-decoration: none; 
-            font-weight: bold; padding: 0.6rem 1.2rem; 
-            border-radius: 30px; font-size: 0.95rem; transition: all 0.3s ease;
+            text-decoration: none; color: var(--gris); font-weight: 500;
+            padding: 0.5rem 1rem; border-radius: 8px; transition: all 0.3s;
         }
-        nav a:hover, nav a.active { 
-            background: rgba(255,255,255,0.3); 
-            transform: translateY(-3px); 
-        }
-        .btn-top {
-            background: rgba(255,255,255,0.3); color: var(--color-blanco); 
-            padding: 0.6rem 1.6rem; border-radius: 30px; font-weight: bold;
-            text-decoration: none; transition: all 0.3s; font-size: 0.95rem;
-        }
-        .btn-top:hover { background: var(--color-blanco); color: var(--rosa-intenso); transform: translateY(-3px); }
-
-        main { max-width: 1200px; margin: 1.8rem auto; padding: 0 2rem; }
-        section { 
-            display: none; margin-bottom: 3rem; background: var(--color-blanco); 
-            padding: 2.4rem; border-radius: 25px; 
-            box-shadow: 0 15px 50px rgba(217,60,139,0.15);
-            border: 2px solid rgba(247,178,217,0.4);
-        }
-        section.active { display: block; }
-
-        h1 { font-size: 2.8rem; text-align: center;
-            background: linear-gradient(45deg, var(--rosa-intenso), var(--rosa-fuerte));
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            background-clip: text; margin-bottom: 1.5rem;
-        }
-        h2 { font-size: 2.1rem; color: var(--rosa-intenso); text-align: center; margin-bottom: 1.5rem; }
-        h3 { font-size: 1.4rem; color: var(--rosa-oscuro); margin-bottom: 0.8rem; }
-        p { font-size: 1.05rem; margin-bottom: 1rem; }
-
-        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 1.8rem; margin-top: 1.8rem; }
-        .card {
-            background: var(--rosa-suave); border-radius: 20px; padding: 2rem; 
-            border: 2px solid rgba(247,178,217,0.4); transition: all 0.4s; 
-            position: relative; overflow: hidden; box-shadow: 0 10px 30px rgba(217,60,139,0.1);
-        }
-        .card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--rosa-intenso), var(--rosa-fuerte)); }
-        .card:hover { transform: translateY(-10px); box-shadow: 0 25px 60px rgba(217,60,139,0.3); border-color: var(--rosa-vibrante); }
-
-        .etiqueta {
-            background: linear-gradient(45deg, var(--rosa-intenso), var(--rosa-fuerte));
-            color: var(--color-blanco); padding: 0.4rem 0.9rem; border-radius: 20px;
-            font-weight: bold; display: inline-block; margin-bottom: 0.8rem;
-            text-transform: uppercase; font-size: 0.85rem; letter-spacing: 0.05em;
+        nav a:hover, nav a.active {
+            color: var(--azul-marino); background: var(--azul-suave);
         }
 
-        .lista-simple { list-style: none; margin-top: 0.8rem; }
-        .lista-simple li { padding: 0.7rem 0; padding-left: 2.2rem; position: relative; font-size: 1rem; }
-        .lista-simple li::before { content: "✨"; color: var(--rosa-vibrante); font-size: 1.3rem; position: absolute; left: 0; }
+        main { max-width: 1200px; margin: 2rem auto; padding: 0 2rem; }
+        .hero {
+            text-align: center; padding: 4rem 0; background: var(--blanco);
+            border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            margin-bottom: 3rem;
+        }
+        .hero h1 {
+            font-size: 3.5rem; font-weight: 800; color: var(--azul-marino);
+            margin-bottom: 1.5rem; line-height: 1.2;
+        }
+        .hero p { font-size: 1.3rem; color: var(--gris); max-width: 600px; margin: 0 auto 2rem; }
+        .cta-button {
+            display: inline-block; background: var(--azul-marino); color: var(--blanco);
+            padding: 1rem 2.5rem; border-radius: 12px; text-decoration: none;
+            font-weight: 600; font-size: 1.1rem; transition: all 0.3s;
+        }
+        .cta-button:hover { background: var(--azul-claro); transform: translateY(-2px); }
 
-        .tabla-simple { width: 100%; border-collapse: collapse; margin-top: 1.5rem; background: var(--color-blanco); border-radius: 12px; overflow: hidden; box-shadow: 0 8px 25px rgba(217,60,139,0.1); }
-        .tabla-simple th, .tabla-simple td { border: 2px solid rgba(247,178,217,0.3); padding: 0.9rem; font-size: 0.95rem; text-align: left; }
-        .tabla-simple th { background: linear-gradient(135deg, var(--rosa-oscuro), var(--rosa-fuerte)); color: var(--color-blanco); font-weight: bold; }
+        section {
+            background: var(--blanco); margin-bottom: 3rem; border-radius: 20px;
+            padding: 3rem; box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+        }
+        section h2 {
+            font-size: 2.5rem; color: var(--azul-marino); margin-bottom: 2rem;
+            text-align: center;
+        }
 
-        .contacto-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 2.5rem; align-items: start; }
-        form { display: grid; gap: 1.2rem; }
-        input, textarea {
-            padding: 1rem; border: 2px solid rgba(217,60,139,0.3); border-radius: 12px; 
-            font-size: 1rem; background: rgba(255,255,255,0.95); transition: all 0.3s;
+        .services-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
         }
-        input:focus, textarea:focus { outline: none; border-color: var(--rosa-vibrante); box-shadow: 0 0 20px rgba(240,107,176,0.3); }
-        button {
-            background: linear-gradient(45deg, var(--rosa-intenso), var(--rosa-fuerte));
-            color: white; padding: 1rem; border: none; border-radius: 12px; 
-            font-weight: bold; font-size: 1.1rem; cursor: pointer; transition: all 0.3s;
+        .service-card {
+            padding: 2rem; border-radius: 16px; background: var(--gris-claro);
+            border-left: 5px solid var(--azul-claro); transition: all 0.3s;
         }
-        button:hover:not(:disabled) { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(217,60,139,0.4); }
-        button:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+        .service-card:hover {
+            transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        .service-icon {
+            font-size: 3rem; margin-bottom: 1rem; display: block;
+        }
 
-        .redes-sociales { margin-top: 2rem; }
-        .redes-vertical { display: flex; flex-direction: column; gap: 1.2rem; align-items: center; }
-        .red-social {
-            display: flex; flex-direction: column; align-items: center; 
-            text-decoration: none; color: var(--color-texto); transition: all 0.3s;
-            width: 70px;
+        .features-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
         }
-        .red-social:hover { transform: translateY(-5px); color: var(--rosa-intenso); }
-        .icono-red { 
-            width: 50px !important; height: 50px !important;
-            object-fit: contain; border-radius: 10px; 
-            border: 2px solid transparent; transition: all 0.3s ease;
+        .feature-card {
+            text-align: center; padding: 2.5rem 1.5rem;
         }
-        .red-social:hover .icono-red { 
-            border-color: var(--rosa-vibrante); 
-            transform: scale(1.15); box-shadow: 0 8px 25px rgba(217,60,139,0.4);
-        }
-        .nombre-red { 
-            font-size: 0.75rem; font-weight: bold; 
-            text-align: center; margin-top: 0.4rem; 
-            opacity: 0.85; letter-spacing: 0.03em;
-        }
-        .red-social:hover .nombre-red { opacity: 1; color: var(--rosa-intenso) !important; }
+        .feature-icon { font-size: 4rem; margin-bottom: 1rem; color: var(--azul-claro); }
 
-        .mensaje-exito {
-            display: none; background: linear-gradient(135deg, #d4edda, #c3e6cb);
-            color: #155724; padding: 1.2rem; border-radius: 12px; 
-            border: 2px solid #c3e6cb; margin-bottom: 1rem; text-align: center;
-            font-weight: bold; font-size: 1.1rem; animation: slideIn 0.5s ease;
+        .contact-container {
+            display: grid; grid-template-columns: 2fr 1fr; gap: 3rem;
         }
-        .mensaje-error {
-            display: none; background: linear-gradient(135deg, #f8d7da, #f5c6cb);
-            color: #721c24; padding: 1.2rem; border-radius: 12px; 
-            border: 2px solid #f5c6cb; margin-bottom: 1rem; text-align: center;
-            font-weight: bold; font-size: 1.1rem; animation: slideIn 0.5s ease;
+        .contact-form {
+            display: grid; gap: 1.5rem;
         }
-        @keyframes slideIn {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
+        input, textarea, select {
+            padding: 1rem; border: 2px solid #e2e8f0; border-radius: 12px;
+            font-size: 1rem; font-family: inherit; transition: border-color 0.3s;
         }
+        input:focus, textarea:focus, select:focus {
+            outline: none; border-color: var(--azul-claro); box-shadow: 0 0 0 3px rgba(59,130,246,0.1);
+        }
+        .submit-btn {
+            background: var(--azul-marino); color: var(--blanco); border: none;
+            padding: 1.2rem; border-radius: 12px; font-size: 1.1rem;
+            font-weight: 600; cursor: pointer; transition: all 0.3s;
+        }
+        .submit-btn:hover:not(:disabled) {
+            background: var(--azul-claro); transform: translateY(-2px);
+        }
+
+        .contact-info h3 {
+            color: var(--azul-marino); margin-bottom: 1.5rem;
+        }
+        .contact-item {
+            display: flex; align-items: center; margin-bottom: 1.5rem;
+            gap: 1rem;
+        }
+        .contact-icon { font-size: 1.5rem; color: var(--azul-claro); }
+
+        .alert {
+            padding: 1rem; border-radius: 12px; margin-bottom: 1.5rem;
+            font-weight: 500; display: none;
+        }
+        .alert-success { background: #ecfdf5; color: #166534; border: 1px solid #bbf7d0; }
+        .alert-error { background: #fef2f2; color: #dc2626; border: 1px solid #fecaca; }
 
         footer {
-            background: linear-gradient(135deg, var(--fucsia), var(--rosa-oscuro));
-            color: var(--color-blanco); padding: 2.2rem 2rem; margin-top: 4rem;
-            text-align: center; font-size: 0.95rem;
+            background: var(--azul-marino); color: var(--blanco);
+            text-align: center; padding: 3rem 2rem 2rem;
         }
-        footer a { color: #fdf2f8; text-decoration: none; }
-        footer a:hover { text-decoration: underline; }
+        .footer-links {
+            display: flex; justify-content: center; gap: 2rem;
+            margin-bottom: 1rem; flex-wrap: wrap;
+        }
+        .footer-links a {
+            color: #bfdbfe; text-decoration: none; transition: color 0.3s;
+        }
+        .footer-links a:hover { color: var(--blanco); }
 
         @media (max-width: 768px) {
-            body { font-size: 1.05rem; }
-            .contacto-grid { grid-template-columns: 1fr; }
-            nav ul { flex-direction: column; gap: 0.8rem; text-align: center; }
-            .grid-3 { grid-template-columns: 1fr; }
-            h1 { font-size: 2.3rem; }
-            h2 { font-size: 1.9rem; }
-            .logo { width: 300px; height: 90px; }
-            .barra-superior { flex-direction: column; gap: 1rem; padding: 1rem 1.5rem; }
-            main { padding: 0 1.5rem; margin: 1.5rem auto; }
-            .redes-vertical { flex-direction: row; justify-content: center; gap: 1.2rem; }
-            .icono-red { width: 45px !important; height: 45px !important; }
+            .hero h1 { font-size: 2.5rem; }
+            section { padding: 2rem 1.5rem; }
+            .contact-container { grid-template-columns: 1fr; }
+            nav ul { flex-direction: column; gap: 1rem; text-align: center; }
+            .header-container { flex-direction: column; gap: 1rem; }
         }
     </style>
 </head>
 <body>
     <!-- HEADER -->
     <header>
-        <div class="barra-superior">
-            <div class="logo">
-                <img src="https://i.imgur.com/RgSLwrb.png" alt="Laboratorios TISSUUM - Anatomía Patológica" class="logo-img">
-            </div>
-            <div style="font-weight: bold; font-size: 1.1rem; color: var(--rosa-oscuro);">
-                Laboratorio de anatomía patológica
-            </div>
-        </div>
-        <div class="navbar">
-            <div class="navbar-inner">
-                <nav>
-                    <ul>
-                        <li><a href="#" onclick="mostrarSeccion('inicio')" class="active">Inicio</a></li>
-                        <li><a href="#" onclick="mostrarSeccion('innovacion')">Innovación</a></li>
-                        <li><a href="#" onclick="mostrarSeccion('servicios')">Servicios</a></li>
-                        <li><a href="#" onclick="mostrarSeccion('calidad')">Calidad</a></li>
-                        <li><a href="#" onclick="mostrarSeccion('equipo')">Equipo</a></li>
-                        <li><a href="#" onclick="mostrarSeccion('contacto')">Contacto</a></li>
-                    </ul>
-                </nav>
-                <a href="#" onclick="mostrarSeccion('contacto')" class="btn-top">Solicitar información</a>
-            </div>
+        <div class="header-container">
+            <div class="logo">TISSUUM Labs</div>
+            <nav>
+                <ul>
+                    <li><a href="#inicio" class="active">Inicio</a></li>
+                    <li><a href="#servicios">Servicios</a></li>
+                    <li><a href="#sobre-nosotros">Sobre Nosotros</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </nav>
         </div>
     </header>
 
-    <!-- MAIN CONTENT -->
     <main>
-        <section id="inicio" class="active">
-            <h1>Laboratorios TISSUUM</h1>
-            <p style="font-size: 1.2rem; text-align: center; max-width: 800px; margin: 0 auto 1.5rem;">
-                Especialistas en el estudio microscópico de tejidos y células para diagnósticos precisos.
-            </p>
-            <p style="text-align: center; font-size: 1.1rem;">
-                <strong>🚀 Innovación:</strong> Microtomo con cuchilla de obsidiana para cortes ultrafinos.
-            </p>
+        <!-- HERO SECTION -->
+        <section id="inicio" class="hero">
+            <h1>Anatomía Patológica de Precisión</h1>
+            <p>Laboratorio especializado en Castellón con tecnología de vanguardia para diagnósticos exactos y confiables. Certificado ISO 15189.</p>
+            <a href="#servicios" class="cta-button">Ver Nuestros Servicios</a>
         </section>
 
-        <section id="innovacion">
-            <h2>🚀 Nuestra Innovación Principal</h2>
-            <p>El <strong>microtomo con cuchilla de obsidiana</strong> revoluciona el diagnóstico anatomopatológico.</p>
-            <div class="grid-3">
-                <div class="card">
-                    <span class="etiqueta">Microtomo TISSUUM</span>
-                    <h3>Cuchilla de obsidiana</h3>
-                    <p>La obsidiana permite filos extremadamente finos vs acero tradicional.</p>
-                </div>
-                <div class="card">
-                    <span class="etiqueta">Precisión</span>
-                    <h3>Cortes ultrafinos</h3>
-                    <ul class="lista-simple">
-                        <li>Secciones de 2-5 micras</li>
-                        <li>Menor compresión del tejido</li>
-                        <li>Mejor visualización celular</li>
-                    </ul>
-                </div>
-                <div class="card">
-                    <span class="etiqueta">Comparativa</span>
-                    <h3>Obsidiana vs Acero</h3>
-                    <table class="tabla-simple">
-                        <tr><th></th><th>Obsidiana</th><th>Acero</th></tr>
-                        <tr><td>Filo</td><td>Extremadamente fino</td><td>Bueno</td></tr>
-                        <tr><td>Cortes finos</td><td>Excelente</td><td>Limitado</td></tr>
-                        <tr><td>Artefactos</td><td>Muy pocos</td><td>Frecuentes</td></tr>
-                    </table>
-                </div>
-            </div>
-        </section>
-
+        <!-- SERVICIOS -->
         <section id="servicios">
-            <h2>📋 Nuestros Servicios</h2>
-            <p>Servicios completos de anatomía patológica para hospitales y clínicas.</p>
-            <div class="grid-3">
-                <div class="card">
-                    <h3>🔬 Histopatología</h3>
-                    <ul class="lista-simple">
-                        <li>Procesado de biopsias</li>
-                        <li>Piezas quirúrgicas</li>
-                        <li>Márgenes tumorales</li>
-                        <li>Cortes con obsidiana</li>
+            <h2 id="servicios-nav">🧬 Nuestros Servicios</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <span class="service-icon">🔬</span>
+                    <h3>Histopatología</h3>
+                    <ul style="list-style: none; padding: 0;">
+                        <li>• Procesado de biopsias</li>
+                        <li>• Piezas quirúrgicas completas</li>
+                        <li>• Márgenes tumorales</li>
+                        <li>• Cortes ultrafinos obsidiana</li>
                     </ul>
                 </div>
-                <div class="card">
-                    <h3>🧫 Citología</h3>
-                    <ul class="lista-simple">
-                        <li>Citología ginecológica</li>
-                        <li>Citología no ginecológica</li>
-                        <li>Programas de cribado</li>
-                        <li>Análisis de líquidos</li>
+                <div class="service-card">
+                    <span class="service-icon">🧫</span>
+                    <h3>Citología Avanzada</h3>
+                    <ul style="list-style: none; padding: 0;">
+                        <li>• Ginecológica Papanicolaou</li>
+                        <li>• No ginecológica</li>
+                        <li>• Líquidos corporales</li>
+                        <li>• Programas cribado</li>
                     </ul>
                 </div>
-                <div class="card">
-                    <h3>⚡ Urgencias 24h</h3>
-                    <ul class="lista-simple">
-                        <li>Informes en &lt;48h</li>
-                        <li>Atención 24/7</li>
-                        <li>Recogida muestras</li>
-                        <li>Envío digital</li>
+                <div class="service-card">
+                    <span class="service-icon">⚡</span>
+                    <h3>Urgencias 24/7</h3>
+                    <ul style="list-style: none; padding: 0;">
+                        <li>• Informes &lt;48h</li>
+                        <li>• Recogida muestras 24h</li>
+                        <li>• Envío digital resultados</li>
+                        <li>• Atención permanente</li>
                     </ul>
                 </div>
             </div>
         </section>
 
-        <section id="calidad">
-            <h2>🏆 Garantía de Calidad</h2>
-            <p style="font-size: 1.1rem; text-align: center; max-width: 800px; margin: 0 auto;">
-                Certificaciones y controles que aseguran la máxima fiabilidad.
-            </p>
-            <div class="grid-3">
-                <div class="card">
-                    <span class="etiqueta">Certificado</span>
+        <!-- SOBRE NOSOTROS -->
+        <section id="sobre-nosotros">
+            <h2>🏆 Por Qué Elegirnos</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <span class="feature-icon">✨</span>
+                    <h3>Innovación Obsidiana</h3>
+                    <p>Microtomo con cuchilla de obsidiana para cortes de 2-5 micras sin artefactos.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">📜</span>
                     <h3>ISO 15189</h3>
-                    <p>Norma internacional para laboratorios clínicos.</p>
+                    <p>Certificación internacional que garantiza máxima calidad y fiabilidad.</p>
                 </div>
-                <div class="card">
-                    <span class="etiqueta">Control</span>
-                    <h3>Intercomparación</h3>
-                    <p>Programas nacionales de control de calidad.</p>
-                </div>
-                <div class="card">
-                    <span class="etiqueta">Auditorías</span>
-                    <h3>Inspecciones anuales</h3>
-                    <p>Evaluaciones externas independientes.</p>
+                <div class="feature-card">
+                    <span class="feature-icon">👨‍⚕️</span>
+                    <h3>Equipo Experto</h3>
+                    <p>+20 años experiencia colectiva en anatomía patológica oncológica.</p>
                 </div>
             </div>
         </section>
 
-        <section id="equipo">
-            <h2>👩‍🔬 Equipo Especializado</h2>
-            <p style="font-size: 1.1rem; text-align: center; max-width: 800px; margin: 0 auto 2rem;">
-                Profesionales con amplia experiencia en anatomía patológica.
-            </p>
-            <div class="grid-3">
-                <div class="card">
-                    <span class="etiqueta">Jefe</span>
-                    <h3>Dr. Carlos López</h3>
-                    <p>+25 años experiencia. Especialista tumores.</p>
-                </div>
-                <div class="card">
-                    <span class="etiqueta">Patóloga</span>
-                    <h3>Dra. María García</h3>
-                    <p>+18 años experiencia. Especialista mama y tiroides.</p>
-                </div>
-                <div class="card">
-                    <span class="etiqueta">Jefa Técnica</span>
-                    <h3>Ana Martínez</h3>
-                    <p>+20 años procesado tejidos. Experta microtomo obsidiana.</p>
-                </div>
-            </div>
-        </section>
-
+        <!-- CONTACTO -->
         <section id="contacto">
-            <h2>📞 Contacto</h2>
-            <div class="mensaje-exito" id="mensajeExito">¡Mensaje enviado correctamente! Te contactaremos pronto.</div>
-            <div class="mensaje-error" id="mensajeError">Error al enviar el mensaje. Inténtalo de nuevo.</div>
+            <h2>📞 Contáctanos</h2>
+            <div class="alert alert-success" id="alertSuccess">¡Mensaje enviado exitosamente! Te contactaremos en breve.</div>
+            <div class="alert alert-error" id="alertError">Error al enviar. Por favor, inténtalo de nuevo.</div>
             
-            <div class="contacto-grid">
-                <form id="formContacto">
-                    <input type="text" id="nombre" placeholder="Nombre completo *" required>
-                    <input type="email" id="email" placeholder="Correo electrónico *" required>
-                    <input type="tel" id="telefono" placeholder="Teléfono">
-                    <select id="servicio" style="padding: 1rem; border: 2px solid rgba(217,60,139,0.3); border-radius: 12px; font-size: 1rem; background: rgba(255,255,255,0.95);" required>
-                        <option value="">Seleccionar servicio *</option>
-                        <option value="histopatologia">Histopatología</option>
-                        <option value="citologia">Citología</option>
-                        <option value="urgencias">Urgencias 24h</option>
-                        <option value="informacion">Información general</option>
-                    </select>
-                    <textarea id="mensaje" rows="5" placeholder="Mensaje *" required></textarea>
-                    <button type="submit">Enviar Mensaje</button>
-                </form>
+            <div class="contact-container">
+                <div class="contact-form">
+                    <form id="contactForm" action="mailto:laboratoriotissuum@gmail.com" method="post" enctype="text/plain">
+                        <input type="text" id="name" name="name" placeholder="Nombre completo *" required>
+                        <input type="email" id="email" name="email" placeholder="Correo electrónico *" required>
+                        <input type="tel" id="phone" name="phone" placeholder="Teléfono de contacto">
+                        <select id="service" name="service" required>
+                            <option value="">Servicio requerido *</option>
+                            <option value="histopatologia">Histopatología</option>
+                            <option value="citologia">Citología</option>
+                            <option value="urgencias">Urgencias 24h</option>
+                            <option value="consulta">Consulta general</option>
+                        </select>
+                        <textarea id="message" name="message" rows="5" placeholder="Describe tu necesidad *" required></textarea>
+                        <button type="submit" class="submit-btn">Enviar Consulta</button>
+                    </form>
+                </div>
 
-                <div>
-                    <h3 style="color: var(--rosa-oscuro); margin-bottom: 1rem;">📍 Datos de contacto</h3>
-                    <p><strong>Dirección:</strong><br>Av. del Hospital, 37<br>12004 Castellón de la Plana</p>
-                    <p style="margin-top: 1rem;"><strong>Teléfono:</strong><br><a href="tel:+34964351234" style="color: var(--rosa-intenso);">964 351 234</a></p>
-                    <p style="margin-top: 1rem;"><strong>Email:</strong><br><a href="mailto:info@tissuum.es" style="color: var(--rosa-intenso);">info@tissuum.es</a></p>
-                    
-                    <div class="redes-sociales">
-                        <h4 style="color: var(--rosa-oscuro); margin-bottom: 1rem;">🌐 Redes Sociales</h4>
-                        <div class="redes-vertical">
-                            <a href="#" class="red-social">
-                                <img src="https://cdn-icons-png.flaticon.com/512/7336/7336211.png" alt="LinkedIn" class="icono-red">
-                                <span class="nombre-red">LinkedIn</span>
-                            </a>
-                            <a href="#" class="red-social">
-                                <img src="https://cdn-icons-png.flaticon.com/512/5969/5969700.png" alt="Instagram" class="icono-red">
-                                <span class="nombre-red">Instagram</span>
-                            </a>
-                            <a href="#" class="red-social">
-                                <img src="https://cdn-icons-png.flaticon.com/512/124/124010.png" alt="WhatsApp" class="icono-red">
-                                <span class="nombre-red">WhatsApp</span>
-                            </a>
+                <div class="contact-info">
+                    <h3>Información de Contacto</h3>
+                    <div class="contact-item">
+                        <span class="contact-icon">📍</span>
+                        <div>
+                            <strong>Dirección</strong><br>
+                            Desconocida, Castellón
                         </div>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-icon">📞</span>
+                        <div>
+                            <strong>Teléfono</strong><br>
+                            <a href="tel:+34640979981" style="color: var(--azul-claro); text-decoration: none;">640 979 981</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-icon">✉️</span>
+                        <div>
+                            <strong>Email</strong><br>
+                            <a href="mailto:laboratoriotissuum@gmail.com" style="color: var(--azul-claro); text-decoration: none;">laboratoriotissuum@gmail.com</a>
+                        </div>
+                    </div>
+                    <div style="margin-top: 2rem;">
+                        <strong>🌐 Redes Sociales</strong><br>
+                        <a href="https://instagram.com/laboratoriotissuum" style="color: var(--azul-claro); text-decoration: none;" target="_blank">Instagram: laboratoriotissuum</a><br>
+                        <a href="https://tiktok.com/@laboratoriotissuum" style="color: var(--azul-claro); text-decoration: none;" target="_blank">TikTok: laboratoriotissuum</a><br>
+                        <a href="https://linkedin.com/company/laboratoriotissuum" style="color: var(--azul-claro); text-decoration: none;" target="_blank">LinkedIn: laboratoriotissuum</a>
+                    </div>
+                    <div style="margin-top: 1.5rem;">
+                        <strong>🕒 Horario:</strong><br>
+                        L-V: 8:00-20:00<br>
+                        Urgencias 24h
                     </div>
                 </div>
             </div>
@@ -391,63 +298,58 @@
     </main>
 
     <footer>
-        <p>&copy; 2026 Laboratorios TISSUUM. Todos los derechos reservados. | 
-        <a href="#" onclick="mostrarSeccion('calidad')">ISO 15189</a> | 
-        <a href="#">Aviso Legal</a> | 
-        <a href="#">Política de Privacidad</a></p>
-        <p style="margin-top: 0.5rem; opacity: 0.9;">Laboratorio de Anatomía Patológica - Castellón de la Plana</p>
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <div class="footer-links">
+                <a href="#">Aviso Legal</a>
+                <a href="#">Política Privacidad</a>
+                <a href="#">Política Calidad ISO 15189</a>
+                <a href="#servicios">Servicios</a>
+            </div>
+            <p>&copy; 2026 Laboratorios TISSUUM - Anatomía Patológica Castellón. Todos los derechos reservados.</p>
+        </div>
     </footer>
 
     <script>
-        function mostrarSeccion(idSeccion) {
-            // Ocultar todas las secciones
-            const secciones = document.querySelectorAll('section');
-            secciones.forEach(seccion => seccion.classList.remove('active'));
-            
-            // Mostrar la sección seleccionada
-            document.getElementById(idSeccion).classList.add('active');
-            
-            // Actualizar navegación activa
-            const enlaces = document.querySelectorAll('nav a');
-            enlaces.forEach(enlace => enlace.classList.remove('active'));
-            event.target.classList.add('active');
-            
-            // Scroll suave al inicio
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        // Formulario de contacto
-        document.getElementById('formContacto').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Simular envío
-            const button = this.querySelector('button');
-            const mensajeExito = document.getElementById('mensajeExito');
-            const mensajeError = document.getElementById('mensajeError');
-            
-            button.disabled = true;
-            button.textContent = 'Enviando...';
-            
-            setTimeout(() => {
-                // Simular éxito
-                mensajeExito.style.display = 'block';
-                mensajeError.style.display = 'none';
-                this.reset();
-                button.disabled = false;
-                button.textContent = 'Enviar Mensaje';
-                
-                setTimeout(() => {
-                    mensajeExito.style.display = 'none';
-                }, 5000);
-            }, 1500);
-        });
-
-        // Smooth scroll para navegación
-        document.querySelectorAll('a[href="#"]').forEach(anchor => {
+        // Navegación suave
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+                
+                // Activar enlace actual
+                document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+                this.classList.add('active');
             });
+        });
+
+        // Formulario contacto con mailto
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Recopilar datos del formulario
+            const formData = new FormData(this);
+            const subject = `Nueva consulta desde TISSUUM Labs`;
+            const body = `
+Nombre: ${formData.get('name')}
+Email: ${formData.get('email')}
+Teléfono: ${formData.get('phone')}
+Servicio: ${formData.get('service')}
+Mensaje: ${formData.get('message')}`;
+            
+            const mailtoLink = `mailto:laboratoriotissuum@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            window.location.href = mailtoLink;
+            
+            // Mostrar mensaje de éxito
+            const alertSuccess = document.getElementById('alertSuccess');
+            alertSuccess.style.display = 'block';
+            setTimeout(() => {
+                alertSuccess.style.display = 'none';
+            }, 5000);
         });
     </script>
 </body>
 </html>
+
